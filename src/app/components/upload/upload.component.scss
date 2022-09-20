@@ -1,0 +1,87 @@
+@use "../../../colors";
+
+.container {
+  width: 50%;
+  margin: 30px auto;
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr) 100px;
+  gap: 20px 10px;
+
+  .browse-label {
+    align-self: center;
+  }
+
+  .browse-input {
+    width: 450px;
+  }
+
+  .upload-btn {
+    justify-self: start;
+    grid-column: 2;
+    grid-row: 4;
+  }
+
+  .success-message {
+    grid-column: 2;
+    grid-row: 3;
+  }
+}
+
+.progress-bar {
+  height: 20px;
+  grid-row: 2;
+  border-radius: 4px;
+  border: 1px solid colors.$my-warn;
+  background-image: linear-gradient(45deg, colors.$my-warn 25%, colors.$my-primary 25%, colors.$my-primary 50%,  colors.$my-warn 50%,  colors.$my-warn 75%, colors.$my-primary 75%, colors.$my-primary);
+  background-size: 35px 35px;
+  animation: slide 5s linear infinite;
+  will-change: background-position;
+  grid-column: 2;
+}
+
+.file {
+  visibility: hidden;
+  position: absolute;
+}
+
+@keyframes slide {
+  from {
+    background-position-x: 113px;
+  }
+  to {
+    background-position-x: 0;
+  }
+}
+
+@media screen and (max-width: 1440px)  {
+  .container {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 768px)  {
+  .container {
+    width: 95%;
+
+    .browse-input {
+      width: 180px;
+    }
+  }
+}
+
+
+@media screen and (max-width: 375px)  {
+  .container {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+
+    .browse-label {
+      align-self: start;
+    }
+
+    .browse-input {
+      width: calc(100% - 10px);
+    }
+  }
+}

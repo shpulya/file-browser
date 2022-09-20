@@ -1,0 +1,11 @@
+<div class="container">
+  <label class="browse-label" for="file-input">file:</label>
+  <input class="browse-input start" type="text" id="file-input" [placeholder]="'...'" [readOnly]="true" [value]="filePath"/>
+  <button mat-flat-button color="primary" class="browse-btn" (click)="browseFile()" [disabled]="loading">Browse</button>
+
+  <div *ngIf="loading" class="progress-bar"></div>
+  <span *ngIf="complete" class="success-message">Upload Complete!</span>
+  <button class="upload-btn" mat-flat-button color="primary" (click)="onUpload()" [disabled]="!currentFile">Upload</button>
+</div>
+
+<input type="file" #fileInput class="file" (change)="onChange($event)"/>
